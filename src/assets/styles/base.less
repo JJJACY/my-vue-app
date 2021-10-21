@@ -1,0 +1,34 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+html,body {
+  width: 100%;
+  height: 100%;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#app {
+  height: 100%;
+  margin: 0 !important;
+}
+
+// 判断iphoneX 将 footerBox 的 padding-bottom 填充到最底部
+@supports (bottom: env(safe-area-inset-bottom)) {
+	.tab-bar-container,.comment-write,.submit-btn {
+		padding-bottom: env(safe-area-inset-bottom);
+	}
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
