@@ -3,6 +3,16 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  css: {
+    preprocessorOptions: {
+        less: {
+        modifyVars: {
+          'arcoblue-6': '#a0a184',
+        },
+        javascriptEnabled: true,
+      }
+    }
+  },
   plugins: [
     {
       ...vue(),

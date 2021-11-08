@@ -4,9 +4,9 @@ import {
   // ElBreadcrumb,
   // ElBreadcrumbItem,
   // ElIcon,
-  // ElDropdown,
-  // ElDropdownMenu,
-  // ElDropdownItem,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
   // ElPopover,
   // ElMessage,
   ElForm,
@@ -15,10 +15,11 @@ import {
   ElInput,
   // ElTooltip,
   // ElDialog,
-  // ElScrollbar,
-  // ElMenu,
-  // ElMenuItem,
-  // ElSubmenu
+  ElLink,
+  ElScrollbar,
+  ElMenu,
+  ElMenuItem,
+  ElSubMenu,
 } from 'element-plus'
 
 import 'element-plus/dist/index.css'
@@ -31,6 +32,15 @@ const Element = {
     app.use(ElForm)
     app.use(ElFormItem)
     app.use(ElInput)
+    app.use(ElDropdown)
+    app.use(ElDropdownMenu)
+    app.use(ElDropdownItem)
+    app.use(ElLink)
+    app.use(ElScrollbar)
+    app.use(ElMenu)
+    app.use(ElMenuItem)
+    app.use(ElSubMenu)
+    
   }
 }
 
