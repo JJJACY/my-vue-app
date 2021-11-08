@@ -1,5 +1,5 @@
 <script setup>
-  import { reactive,onMounted,getCurrentInstance,ref } from 'vue'
+  import { reactive, ref, onMounted } from 'vue'
   import { Message } from '@arco-design/web-vue'
 
   const form = reactive({
@@ -18,105 +18,109 @@
       Message.success('你知道个叼毛！')
     })
   }
-  
-  let { proxy } = getCurrentInstance();
-  const chart = ref(null)
-  const mapOption = ref({
-      backgroundColor: "#FFFFFF",
-      geo: {
-        map: "tw",
-        roam: false,
-        zoom: 1,
-        scaleLimit: { min: 1, max: 13 }, // 缩放级别
-        regions: [
-          {
-            name: "南海诸岛",
-            value: 0,
-            itemStyle: {
-              // normal: {
-              //   opacity: 0,
-              //   label: {
-              //     show: false,
-              //   },
-              // },
-            },
-          },
-        ],
-        itemStyle: {
-          areaColor: "#BEDAEE", //默认的地图板块颜色
-          borderWidth: 1,
-          borderColor: "#009ce0",
-        },
-      },
-      title: {
-        text: "台湾地图",
-        x: "center",
-        y: 20,
-      },
-      tooltip: {
-        trigger: "item",
-      },
 
-      //配置属性
-      series: [
-        {
-          name: "数据",
-          type: "map",
-          map: "tw",
-          center: [120.912,23.670], //视角中心点
-          aspectScale: 0.75,
-          roam: 'scale', //缩放、平移
-          geoIndex: 0,
-          emphasis: {
-            focus: 'self',
-            label: {
-              show: false,
-            },
-          },
-          data: [
-            { name: '台北市',value: Math.round(Math.random() * 500)},
-            { name: '新北市',value: Math.round(Math.random() * 500)},
-            { name: '基隆市',value: Math.round(Math.random() * 500)},
-            { name: '宜蘭縣',value: Math.round(Math.random() * 500)},
-            { name: '新竹市',value: Math.round(Math.random() * 500)},
-            { name: '新竹縣',value: Math.round(Math.random() * 500)},
-            { name: '桃園市',value: Math.round(Math.random() * 500)},
-            { name: '苗栗縣',value: Math.round(Math.random() * 500)},
-            { name: '台中市',value: Math.round(Math.random() * 500)},
-            { name: '彰化縣',value: Math.round(Math.random() * 500)},
-            { name: '南投縣',value: Math.round(Math.random() * 500)},
-            { name: '雲林縣',value: Math.round(Math.random() * 500)},
-            { name: '嘉義市',value: Math.round(Math.random() * 500)},
-            { name: '嘉義縣',value: Math.round(Math.random() * 500)},
-            { name: '台南市',value: Math.round(Math.random() * 500)},
-            { name: '高雄市',value: Math.round(Math.random() * 500)},
-            { name: '屏東縣',value: Math.round(Math.random() * 500)},
-            { name: '台東縣',value: Math.round(Math.random() * 500)},
-            { name: '花蓮縣',value: Math.round(Math.random() * 500)},
-            { name: '金門縣',value: Math.round(Math.random() * 500)}
-          ], //数据
-        },
-      ],
-    });
-    onMounted(() => {
-      chart.value = proxy.$echarts.init(
-        document.getElementById("myMap"),
-        // "macarons"
-      );
-      chart.value.setOption(mapOption.value);
-      // this.chart.on("click", function(params) {
-      //   //此点击事件也可以做为其他echarts图表的点击 事件
-      //   alert(params.name);
-      //   console.info(params);
-      // });
-      
-    });
+  const mapContainer = ref(0)
+  const mapInfo = reactive({
+    name: '',
+    text: ''
+  })
 
+  onMounted(() => {
+    // 用外層的 div 當 svg 的寬高
+    const width = (mapContainer.value.offsetWidth).toFixed()
+    const height = (mapContainer.value.offsetHeight).toFixed();
+
+    // 判斷螢幕寬度，給不同放大值
+    let mercatorScale, w = window.screen.width;
+    if(w > 1366) {
+      mercatorScale = 11000;
+    }
+    else if(w <= 1366 && w > 480) {
+      mercatorScale = 9000;
+    }
+    else {
+      mercatorScale = 6000;
+    }
+
+    //https://github.com/d3/d3/blob/main/CHANGES.md#geographies-d3-geo
+    // d3.geo.path ↦ d3.geoPath
+    // d3.geo.mercator ↦ d3.geoMercator
+
+    // d3：svg path 產生器
+    var path = d3.geoPath().projection(
+      d3.geoMercator()                    //墨卡托投影
+        .center([121,24])                 //链式写法，.center([longitude, latitude])设置地图中心
+        .scale(mercatorScale)             //设置地图缩放
+        .translate([width/2, height/2.5]) //设置偏移 
+    );
+
+    // 讓d3抓svg，並寫入寬高
+      var svg = d3.select('#svg')
+          .attr('width', width)
+          .attr('height', height)
+          .attr('viewBox', `0 0 ${width} ${height}`);
+
+    // 讓d3抓GeoJSON檔，並寫入path的路徑
+    var url = '../newTw.json'; // GeoJSON的檔案路徑
+    d3.json(url).then((res) => {
+      svg
+        .selectAll('path')
+        .data(res.features)
+        .enter().append('path')
+        .attr('d', path)
+        .attr(
+          // 設定id，為了click時加class用
+          'id',(d) => ('city' + d.properties.COUNTYCODE)
+        )
+        .on('click',function(d,i) {
+          console.log(d,i)
+          mapInfo.name = i.properties.COUNTYNAME
+          mapInfo.text = i.properties.COUNTYENG
+          if(document.querySelector('.active')) {
+            document.querySelector('.active').classList.remove('active');
+            document.getElementById('city' + i.properties.COUNTYCODE).classList.remove('active');
+          }
+          //被點擊的縣市加上 .active
+          document.getElementById('city' + i.properties.COUNTYCODE).classList.add('active');
+        })
+        // .on('click', d => {
+          // this.h1 = d.properties.COUNTYNAME; // 換中文名
+          // this.h2 = d.properties.COUNTYENG; // 換英文名
+          // 有 .active 存在，就移除 .active
+          // if(document.querySelector('.active')) {
+          //   document.querySelector('.active').classList.remove('active');
+          // }
+          // 被點擊的縣市加上 .active
+          // document.getElementById('city' + d.properties.COUNTYCODE).classList.add('active');
+        // })
+    })
+    // axios.get(url).then(res => {
+    //   svg
+    //   .selectAll('path')
+    //   .data(res.data.features)
+    //   .enter().append('path')
+    //   .attr('d', path)
+    //   .attr({
+    //     // 設定id，為了click時加class用
+    //     id: (d) => 'city' + d.properties.COUNTYCODE
+    //   })
+    //   .on('click', d => {
+    //     // this.h1 = d.properties.COUNTYNAME; // 換中文名
+    //     // this.h2 = d.properties.COUNTYENG; // 換英文名
+    //     // 有 .active 存在，就移除 .active
+    //     if(document.querySelector('.active')) {
+    //       document.querySelector('.active').classList.remove('active');
+    //     }
+    //     // 被點擊的縣市加上 .active
+    //     document.getElementById('city' + d.properties.COUNTYCODE).classList.add('active');
+    //   });
+    // })
+  })
   defineExpose({
-    // a,
     form,
     handleClickItem,
-    handleClickMessage
+    handleClickMessage,
+    mapInfo
   })
 </script>
 
@@ -142,21 +146,43 @@
         <a-button @click="handleClickMessage">Submit</a-button>
       </a-form-item>
     </a-form>
-
-    <div class="map-container">
-      <div id="myMap" class="twmap" ref="myMap"></div>
+    
+    <!-- <svg class="twmap"></svg> -->
+    <div class="map-container" ref="mapContainer">
+      <!-- <div id="myMap" class="twmap" ref="myMap"></div> -->
+      <svg class="twmap" id="svg" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet"></svg>
+      <div style="width: 200px">
+        <h1>{{mapInfo.name}}</h1>
+        <h1>{{mapInfo.text}}</h1>
+      </div>
     </div>
   </div>
 </template>
 
-<style>
+<style lang="less">
 .map-container {
-  width: 800px;
-  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 800px;
   margin: 0 auto;
+  background: linear-gradient(to right, #414345, #232526);
 }
-.twmap {
-  width: 100%;
+
+svg {
   height: 100%;
 }
+
+path {
+  fill: transparent;
+  stroke: #FFF;
+  cursor: pointer;
+  transition: fill .2s ease, stroke .2s ease, transform .2s ease;
+  &:hover, &.active {
+    fill: rgba(#FFCA28, .5);
+    stroke: #FFCA28;
+    transform: translateY(-5px)
+  }
+}    
 </style>

@@ -7,10 +7,10 @@ import IconSvg from './plugins/svg/index.vue'
 
 import Arco  from './plugins/arce'
 
-import * as echarts from 'echarts'
+// import * as echarts from 'echarts'
 // import china from '../public/china.json'
-import tw from '../public/tw.json'
-echarts.registerMap('tw',tw)
+// import tw from '../public/tw.json'
+// echarts.registerMap('tw',tw)
 
 // import axios from 'axios'
 
@@ -28,6 +28,6 @@ app.component('svg-icon',IconSvg)
 app.use(router)
 app.use(Element)
 app.use(Arco)
-app.config.globalProperties.$echarts = echarts //绑定实例
+// app.config.globalProperties.$echarts = echarts //绑定实例
 
 app.mount('#app')
