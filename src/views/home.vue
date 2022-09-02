@@ -119,7 +119,7 @@ defineExpose({
 
 <template>
   <div class="page-home">
-    <h5>首页</h5>
+    <h5>{{ $t("nav.home.name") }}</h5>
     <a-form :model="form" :style="{width:'600px'}">
       <a-form-item field="name" label="Username">
         <a-input v-model="form.name" placeholder="please enter your username..." />

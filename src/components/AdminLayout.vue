@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import { useUserStore } from '../stores/user'
 import routesAll from '../router/routes'
 import screenfull from 'screenfull'
-import { setLocale } from "@/locals/index";
+import { setLocale } from "@/locales/index";
 import { Message } from '@arco-design/web-vue'
 import { useI18n } from 'vue-i18n'
 const { locale } = useI18n()
@@ -101,10 +101,6 @@ const handleCollapse = () => {
   collapse.value = !collapse.value
 }
 
-const goLxp = () => {
-  console.log(123)
-}
-
 const handleCommand = (command) => {
   if (typeof command === 'handleLogout') handleLogout()
   else changeLocale(command);
@@ -120,7 +116,6 @@ const toggleScreenfull = () => {
 
 const changeLocale = lang => {
   locale.value = lang
-  console.log(locale.value)
   setLocale(lang)
 }
 
@@ -165,7 +160,6 @@ defineExpose({
   filterRoutes,
   haveChildren,
   handleCollapse,
-  goLxp,
   handleCommand,
   toggleScreenfull,
   changeLocale,

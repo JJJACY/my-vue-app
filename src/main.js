@@ -8,7 +8,7 @@ import { createPinia } from 'pinia'
 
 import IconSvg from './plugins/iconSvg/index.vue'
 
-import i18n from './locals/index'
+import i18n from './locales/index'
 
 // import * as echarts from 'echarts'
 // import china from '../public/china.json'

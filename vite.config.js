@@ -62,7 +62,7 @@ export default defineConfig({
       compositionOnly: false,
       runtimeOnly: true,
       // you need to set i18n resource including paths !
-      include: [resolve(__dirname, './src/locales/**')],
+      include: [resolve(__dirname, './src/locales/')],
     }),
     viteCompression({
       //生成压缩包gz

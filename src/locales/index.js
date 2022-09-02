@@ -17,29 +17,16 @@ const ELEMENT_LANG = {
 function loadLocaleMessages() {
   const locales = import.meta.globEager('./project/*.json')
   const messages = {};
-
   Object.keys(locales).forEach(key =>{
     const matched = key.match(/([A-Za-z0-9-_]+)\./i);
     if (matched && matched.length > 1) {
       const locale = matched[1];
-      console.log(locale)
       messages[locale] = {
         ...locales[key],
         ...ELEMENT_LANG[locale]
       };
     }
   })
-
-  // locales.keys().forEach(key => {
-  //   const matched = key.match(/([A-Za-z0-9-_]+)\./i);
-  //   if (matched && matched.length > 1) {
-  //     const locale = matched[1];
-  //     messages[locale] = {
-  //       ...locales(key),
-  //       ...ELEMENT_LANG[locale]
-  //     };
-  //   }
-  // });
   return messages;
 }
 
