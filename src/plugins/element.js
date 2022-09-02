@@ -19,7 +19,7 @@ import {
   ElScrollbar,
   ElMenu,
   ElMenuItem,
-  ElSubMenu,
+  ElSubMenu
 } from 'element-plus'
 
 import 'element-plus/dist/index.css'
@@ -27,7 +27,7 @@ import 'element-plus/dist/index.css'
 // const app = createApp()
 // console.log(app,28)
 const Element = {
-  install: function(app) {
+  install: function (app) {
     app.use(ElButton)
     app.use(ElForm)
     app.use(ElFormItem)
@@ -40,7 +40,6 @@ const Element = {
     app.use(ElMenu)
     app.use(ElMenuItem)
     app.use(ElSubMenu)
-    
   }
 }
 

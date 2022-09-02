@@ -1,0 +1,1 @@
+var markdata ={"list":[{"id":"Center","lon":"120.6344","lat":"24.1535","label":"國土測繪中心","pic":"qry_addr.png","color":"#FF00FF","url":"http://www.nlsc.gov.tw/"},{"id":"Marker","lon":"120.6335","lat":"24.1533","label":"地籍資料庫","pic":"qry_cross.png","color":"blue","url":""}]}

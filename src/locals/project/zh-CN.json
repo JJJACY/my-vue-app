@@ -1,0 +1,181 @@
+{
+  "common": {
+    "brand": "项目",
+    "admin": "管理中心",
+    "login": "登录",
+    "logout": "退出登录",
+    "detail": "详情",
+    "edit": "编辑",
+    "save": "保存",
+    "delete": "删除",
+    "guide": "指南",
+    "confirm": "确定",
+    "cancel": "取消"
+  },
+  "success": {
+    "format": "{attribute}成功"
+  },
+  "error": {
+    "format": "{attribute}{message}",
+    "missing": "缺少必要参数",
+    "notEmpty": "不能为空",
+    "number": "必须为数字值",
+    "integer": "必须为整数值",
+    "minLimit": "不能小于 {limit}",
+    "login": "手机号码格式有误，请重新填写。",
+    "uploadLimit": "请上传不大于 {limit} 且格式为jpg、gif、png 的文件"
+  },
+  "warning": {
+    "browser": "当前浏览器不支持全屏操作"
+  },
+  "api": {
+    "forbidden": "没有权限！",
+    "serverError": "服务器发送错误，请稍后再试",
+    "timeout": "网络超时",
+    "notWritten": "本地上传没写"
+  },
+  "nav": {
+    "home": {
+      "name": "主页"
+    },
+    "icon": {
+      "name": "图标"
+    },
+    "routes": {
+      "name": "路由嵌套",
+      "children": [
+        {
+          "name": "菜单 1"
+        },
+        {
+          "name": "菜单 2"
+        },
+        {
+          "name": "菜单 3",
+          "children": [
+            {
+              "name": "菜单 3-1"
+            }
+          ]
+        }
+      ]
+    },
+    "editor": {
+      "name": "文本编辑器",
+      "children": [
+        {
+          "name": "富文本",
+          "children": [
+            {
+              "name": "Quill"
+            }
+          ]
+        },
+        {
+          "name": "Markdown",
+          "children": [
+            {
+              "name": "Mavon"
+            }
+          ]
+        }
+      ]
+    },
+    "image": {
+      "name": "图像编辑器"
+    },
+    "dashboard": {
+      "name": "看板"
+    }
+  },
+  "login": {
+    "form": {
+      "phone": "手机号码",
+      "password": "密码"
+    }
+  },
+  "home": {
+    "title": "JK 数据管理中心",
+    "tip_1": "Hi，{name}！欢迎使用数据后台管理系统",
+    "tip_2": "申请权限请联系：zhuhuajian@jk.com，并邮件抄送部门负责人。"
+  },
+  "icon": {
+    "name": "图标",
+    "operationalGuidelines": "操作指南",
+    "description": "可使用 element-ui 自带的一套常用图标集合，也可使用自己自定义的图标库（图标库的生成可点击右上角的操作指南进行查看）。",
+    "usage": "使用方法",
+    "showCode": "显示代码",
+    "hiddenCode": "隐藏代码",
+    "icons": "图标集合",
+    "diy": "自定义",
+    "guide": {
+      "tips_1": "生成自定义图标库的步骤很简单，我们只需要把相应的 SVG 文件放到特定的文件夹内即可。",
+      "tips_2": "SVG 文件可到",
+      "tips_3": "或其他图标网站进行下载",
+      "tips_4": "文件保存路径：",
+      "title": "图标库代码生成",
+      "text_1": "首先，我们进入到",
+      "text_2": "阿里巴巴矢量图标库，搜索并找到我们需要的图标，点击下载，如图：",
+      "text_3": "之后，点击 “复制 SVG”，这样我们就成功生成了所需图标的 SVG 代码。",
+      "text_4": "最后，将复制得到的 SVG 代码粘贴到图中框选代码的位置，这样我们的图标库就成功生成了这个图标，可以直接使用了。"
+    }
+  },
+  "routes": {
+    "nav_1": "一级导航",
+    "nav_2": "二级导航",
+    "nav_3": "三级导航",
+    "onePage": "单页",
+    "multipage": "拥有子页面",
+    "detailsPage": "详情页"
+  },
+  "editor": {
+    "components": {
+      "placeholder": "开始编辑...",
+      "uploadVideo": "上传视频",
+      "obtainLink": "获取链接",
+      "videoLink": "视频链接：",
+      "coverLink": "封面链接：",
+      "videoLinkPlaceholder": "请输入视频链接地址",
+      "coverLinkPlaceholder": "请输入封面链接地址",
+      "copyLink": "点击链接即可复制～",
+      "selectFile": "选择文件",
+      "copy": "复制"
+    },
+    "views": {
+      "quill": {
+        "introduction_1": "Quill 是一款基于兼容性与可扩展性而构建的现代富文本编辑器。",
+        "introduction_2": "它由 Jason Chen 和 Byron Milligan 创建，并由 Slab 积极维护。"
+      },
+      "mavon": {
+        "introduction": "基于 Vue 的 markdown 编辑器。",
+        "markdownIt": "jk-markdown-it",
+        "markdownItIntroduction": "Markdown 解析器，完美兼容 mavon editor。"
+      }
+    }
+  },
+  "lxp": {
+    "name": "学习体验平台",
+    "index": {
+      "myFavorite": "我的收藏",
+      "myFavoriteMore": "查看我的收藏",
+      "recommend": "猜你喜欢",
+      "InBatch": "换一批"
+    },
+    "detail": {
+      "next": "下一章",
+      "ending": "全书完"
+    }
+  },
+  "savier": {
+    "addChart": "添加图表",
+    "editChart": "编辑宽高",
+    "chartId": "图表ID",
+    "width": "宽度",
+    "height": "高度",
+    "add": "添加",
+    "edit": "编辑看板",
+    "save": "保存看板",
+    "immediatelyAdd": "立即添加",
+    "saveSuccess": "保存看板信息成功"
+  }
+}

@@ -3,9 +3,12 @@ import App from './App.vue'
 import router from './router/index'
 
 import Element from './plugins/element'
-import IconSvg from './plugins/svg/index.vue'
+import Arco from './plugins/arce'
+import { createPinia } from 'pinia'
 
-import Arco  from './plugins/arce'
+import IconSvg from './plugins/iconSvg/index.vue'
+
+import i18n from './locals/index'
 
 // import * as echarts from 'echarts'
 // import china from '../public/china.json'
@@ -19,15 +22,24 @@ import Arco  from './plugins/arce'
 //   echarts.registerMap('tw',tw)
 // })
 
-
 // echarts.registerMap('china',china)
+// const svgBuilder = import.meta.glob('./plugins/svg/index.js')
+// console.log(svgBuilder)
+
+import 'virtual:svg-icons-register'
+import allKeys from 'virtual:svg-icons-names'
+console.log(allKeys)
 
 const app = createApp(App)
-app.component('svg-icon',IconSvg)
+const pinia = createPinia()
 
-app.use(router)
-app.use(Element)
-app.use(Arco)
+app
+  .use(router)
+  .use(pinia)
+  .use(Element)
+  .use(Arco)
+  .use(i18n)
+  .component('icon-svg', IconSvg)
+  // .use(vueI18n)
 // app.config.globalProperties.$echarts = echarts //绑定实例
-
-app.mount('#app')
+  .mount('#app')

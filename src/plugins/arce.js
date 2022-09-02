@@ -3,12 +3,12 @@ import {
   Form,
   // Formitem,
   Input,
-  Checkbox,
+  Checkbox
 } from '@arco-design/web-vue'
-import '@arco-design/web-vue/dist/arco.css';
+import '@arco-design/web-vue/dist/arco.css'
 
 const Arco = {
-  install(Vue) {
+  install (Vue) {
     Vue.use(Button)
     Vue.use(Form)
     // Vue.use(Formitem)

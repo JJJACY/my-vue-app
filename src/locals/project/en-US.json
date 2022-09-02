@@ -1,0 +1,181 @@
+{
+  "common": {
+    "brand": "Project",
+    "admin": "Admin",
+    "login": "Log in",
+    "logout": "Log out",
+    "detail": "Details",
+    "edit": "Edit",
+    "save": "Save",
+    "delete": "Delete",
+    "guide": "Guide",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "success": {
+    "format": "{attribute} successfully"
+  },
+  "error": {
+    "format": "{attribute} {message}",
+    "missing": "Required parameter missing",
+    "notEmpty": "can't be empty",
+    "number": "must be a number",
+    "integer": "must be an integer",
+    "minLimit": "can't be less than {limit}",
+    "login": "The format of mobile phone number is wrong, please fill in again.",
+    "uploadLimit": "Upload files no larger than {limit} in JPG, GIF, PNG format"
+  },
+  "warning": {
+    "browser": "You browser can not work"
+  },
+  "api": {
+    "forbidden": "No permissions!",
+    "serverError": "The server sent an error, please try again later",
+    "timeout": "Network timeout",
+    "notWritten": "Local upload not written"
+  },
+  "nav": {
+    "home": {
+      "name": "Homepage"
+    },
+    "icon": {
+      "name": "Icons"
+    },
+    "routes": {
+      "name": "Nested routes",
+      "children": [
+        {
+          "name": "Menu 1"
+        },
+        {
+          "name": "Menu 2"
+        },
+        {
+          "name": "Menu 3",
+          "children": [
+            {
+              "name": "Menu 3-1"
+            }
+          ]
+        }
+      ]
+    },
+    "editor": {
+      "name": "Text editor",
+      "children": [
+        {
+          "name": "Rich text",
+          "children": [
+            {
+              "name": "Quill"
+            }
+          ]
+        },
+        {
+          "name": "Markdown",
+          "children": [
+            {
+              "name": "Mavon"
+            }
+          ]
+        }
+      ]
+    },
+    "image": {
+      "name": "Image editor"
+    },
+    "dashboard": {
+      "name": "Dashboards"
+    }
+  },
+  "login": {
+    "form": {
+      "phone": "Mobile phone number",
+      "password": "Password"
+    }
+  },
+  "home": {
+    "title": "Data Management System",
+    "tip_1": "Hi, {name}! Welcome to the Data Management System of JK.",
+    "tip_2": "Please contact us via shengdandan@jk.com. We will reply within 24hrs."
+  },
+  "icon": {
+    "name": "Icons",
+    "operationalGuidelines": "Operational guidelines",
+    "description": "You can use element-ui with a set of commonly used icon collection, or you can use your own custom icon library (the generation of the icon library can be viewed by clicking the operation guide in the upper right corner).",
+    "usage": "Basic usage",
+    "showCode": "Expand",
+    "hiddenCode": "Hide",
+    "icons": "Icons",
+    "diy": "User-Defined",
+    "guide": {
+      "tips_1": "The steps to generate a custom icon library are simple, we simply need to place the appropriate SVG files in a specific folder.",
+      "tips_2": "SVG files can be downloaded from",
+      "tips_3": "or other icon sites",
+      "tips_4": "The file is saved at the following path: ",
+      "title": "Icon library code generation",
+      "text_1": "First, we enter",
+      "text_2": "(alibaba vector icon library), search and find the icon we need, and click to download it, as shown in the figure below:",
+      "text_3": "After that, click \"Copy SVG\", and we have successfully generated the SVG code for the desired icon.",
+      "text_4": "Finally, paste the copied SVG code into the location of the box selection code in the diagram, so that our icon library has successfully generated the icon, ready to be used directly."
+    }
+  },
+  "routes": {
+    "nav_1": "Level 1 navigation",
+    "nav_2": "Level 2 navigation",
+    "nav_3": "Level 3 navigation",
+    "onePage": "One page",
+    "multipage": "Have child pages",
+    "detailsPage": "Details page"
+  },
+  "editor": {
+    "components": {
+      "placeholder": "Editing...",
+      "uploadVideo": "Video Upload",
+      "obtainLink": "Obtain the link",
+      "videoLink": "Video Link：",
+      "coverLink": "Cover Link：",
+      "videoLinkPlaceholder": "Please enter the video link address",
+      "coverLinkPlaceholder": "Please enter the cover link address",
+      "copyLink": "Click the link to copy",
+      "selectFile": "Select File",
+      "copy": "Copy"
+    },
+    "views": {
+      "quill": {
+        "introduction_1": "Quill is a modern rich text editor built for compatibility and extensibility.",
+        "introduction_2": "It was created by Jason Chen and Byron Milligan and actively maintained by Slab."
+      },
+      "mavon": {
+        "introduction": "A markdown editor based on Vue.",
+        "markdownIt": "jk-markdown-it",
+        "markdownItIntroduction": "Markdown parser, perfectly compatible with the mavon editor."
+      }
+    }
+  },
+  "lxp": {
+    "name": "Learning experience platform",
+    "index": {
+      "myFavorite": "My favorite",
+      "myFavoriteMore": "See more",
+      "recommend": "Recommend",
+      "InBatch": "In a batch"
+    },
+    "detail": {
+      "next": "Next chapter",
+      "ending": "The end"
+    }
+  },
+  "savier": {
+    "addChart": "Add chart",
+    "editChart": "Edit wide high",
+    "chartId": "Chart ID",
+    "width": "Width",
+    "height": "Height",
+    "add": "Added",
+    "edit": "Edit",
+    "save": "Save",
+    "immediatelyAdd": "Immediately add",
+    "saveSuccess": "Save dashboard message successfully"
+  }
+}

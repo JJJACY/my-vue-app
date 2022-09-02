@@ -2,7 +2,7 @@ import axios from '../request/axios'
 const API = '../public/tw.json'
 
 const localTwJsonService = {
-  Json(){
+  Json () {
     return axios.get(API)
   }
 }

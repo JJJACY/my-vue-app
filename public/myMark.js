@@ -1,0 +1,1 @@
+var markdata ={"list":[{"id":"Center","lon":"121.520542","lat":"25.052674","label":"沒啥","pic":"qry_addr.png","color":"#000000","url":"https://maps.nlsc.gov.tw/"}]}

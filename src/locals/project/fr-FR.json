@@ -1,0 +1,181 @@
+{
+  "common": {
+    "brand": "Projet",
+    "admin": "Gestion",
+    "login": "Connexion",
+    "logout": "Se déconnecter",
+    "detail": "Détails",
+    "edit": "Modifier",
+    "save": "Sauvegarder",
+    "delete": "Supprimer",
+    "guide": "Guide",
+    "confirm": "Confirmer",
+    "cancel": "Annuler"
+  },
+  "success": {
+    "format": "{attribute} réussie"
+  },
+  "error": {
+    "format": "{attribute} {message}",
+    "missing": "Paramètres nécessaires manquants",
+    "notEmpty": "doit être rempli(e)",
+    "number": "doit être numérique",
+    "integer": "doit être nombres entiers",
+    "minLimit": "pas moins de {limit}",
+    "login": "Il y a une erreur dans le format du numéro de téléphone portable, veuillez le remplir à nouveau.",
+    "uploadLimit": "Veuillez télécharger un fichier qui n’est pas plus grand que {limit} et qui a le format JPG, gif, PNG"
+  },
+  "warning": {
+    "browser": "Le navigateur actuel ne permet pas le fonctionnement à écran complet"
+  },
+  "api": {
+    "forbidden": "Pas de permis!",
+    "serverError": "Le serveur a envoyé une erreur, essayez de nouveau plus tard.",
+    "timeout": "Temps d’attente du réseau",
+    "notWritten": "Téléchargement local non écrit"
+  },
+  "nav": {
+    "home": {
+      "name": "Page d'accueil"
+    },
+    "icon": {
+      "name": "Icônes"
+    },
+    "routes": {
+      "name": "Circuit intégré",
+      "children": [
+        {
+          "name": "Menu 1"
+        },
+        {
+          "name": "Menu 2"
+        },
+        {
+          "name": "Menu 3",
+          "children": [
+            {
+              "name": "Menu 3-1"
+            }
+          ]
+        }
+      ]
+    },
+    "editor": {
+      "name": "Éditeur de textes",
+      "children": [
+        {
+          "name": "Texte riche",
+          "children": [
+            {
+              "name": "Quill"
+            }
+          ]
+        },
+        {
+          "name": "Markdown",
+          "children": [
+            {
+              "name": "Mavon"
+            }
+          ]
+        }
+      ]
+    },
+    "image": {
+      "name": "Éditeur d’images"
+    },
+    "dashboard": {
+      "name": "Tableaux de bords"
+    }
+  },
+  "login": {
+    "form": {
+      "phone": "Numéro de téléphone mobile",
+      "password": "Mot de passe"
+    }
+  },
+  "home": {
+    "title": "Système de gestion Data",
+    "tip_1": "Bonjour, {name}！Bienvenue dans le système de gestion Data de JK.",
+    "tip_2": "Veuillez consulter le manuel d'administration Data pour la navigation et les opérations.Pour les autres questions, veuillez contacter shengdandan@jk.com. Nous vous répondrons sous 24 heures maximum."
+  },
+  "icon": {
+    "name": "Icônes",
+    "operationalGuidelines": "Lignes directrices opérationnelles",
+    "description": "Une collection d’icônes fréquemment utilisées peut être utilisée, soit à l’aide de la collection d’icônes habituelles qui est fournie par element-ui, soit à l’aide de sa propre bibliothèque d’icônes personnalisée (la création de la bibliothèque d’icônes peut être vue en cliquant sur le guide d’action en haut à droite).",
+    "usage": "Usage",
+    "showCode": "Agrandir",
+    "hiddenCode": "Réduire",
+    "icons": "Icônes",
+    "diy": "Personnalisé",
+    "guide": {
+      "tips_1": "La procédure de création d’une bibliothèque d’icônes personnalisées est simple, il suffit de placer le fichier SVG correspondant dans un dossier spécifique.",
+      "tips_2": "Le fichier SVG peut être téléchargé sur",
+      "tips_3": "ou sur d’autres sites internet",
+      "tips_4": "La voie de conservation du fichier: ",
+      "title": "Génération de codes de base d’icônes",
+      "text_1": "Tout d’abord, nous sommes allés à",
+      "text_2": "(la bibliothèque d’icônes vectorielles de alibaba), nous avons cherché et trouvé les icônes dont nous avions besoin, et nous avons cliqué sur la photo suivante pour les télécharger:",
+      "text_3": "Ensuite, cliquez sur \"copiez SVG\" et nous obtenons ainsi le code SVG de l’icône désirée.",
+      "text_4": "Enfin, le code SVG copié est collé à l’endroit du code dans le diagramme, de sorte que notre bibliothèque d’icônes a réussi à générer cette icône et est prête à être utilisée directement."
+    }
+  },
+  "routes": {
+    "nav_1": "Navigation niveau 1",
+    "nav_2": "Navigation niveau 2",
+    "nav_3": "Navigation niveau 3",
+    "onePage": "Page",
+    "multipage": "Nombre de pages",
+    "detailsPage": "Page des détails"
+  },
+  "editor": {
+    "components": {
+      "placeholder": "Éditer...",
+      "uploadVideo": "Télécharger une vidéo",
+      "obtainLink": "Liens d’accès",
+      "videoLink": "Liens vidéo：",
+      "coverLink": "Lien de couverture：",
+      "videoLinkPlaceholder": "Veuillez indiquer l’adresse du lien vidéo",
+      "coverLinkPlaceholder": "Veuillez indiquer l’adresse du lien de couverture",
+      "copyLink": "Vous pouvez le copier en cliquant sur le lien",
+      "selectFile": "Sélection des fichiers",
+      "copy": "Copies"
+    },
+    "views": {
+      "quill": {
+        "introduction_1": "Quill est un éditeur moderne de textes riches construit sur la base de la compatibilité et de l’extensibilité.",
+        "introduction_2": "Il a été créé par Jason Chen et Byron Milligan et géré activement par Slab."
+      },
+      "mavon": {
+        "introduction": "Éditeur markdown basé sur Vue.",
+        "markdownIt": "jk-markdown-it",
+        "markdownItIntroduction": "Le parser Markdown, parfaitement compatible avec mavon editor."
+      }
+    }
+  },
+  "lxp": {
+    "name": "Plateforme d'expérience d'apprentissage",
+    "index": {
+      "myFavorite": "Ma collection",
+      "myFavoriteMore": "Voir plus",
+      "recommend": "Recommandée",
+      "InBatch": "Autre lot"
+    },
+    "detail": {
+      "next": "Chapitre suivant",
+      "ending": "Fin du livre"
+    }
+  },
+  "savier": {
+    "addChart": "Ajout de diagrammes",
+    "editChart": "Taille de l’éditeur",
+    "chartId": "ID de diagramme",
+    "width": "Largeur",
+    "height": "hauteur",
+    "add": "Créer",
+    "edit": "Modifier",
+    "save": "Sauvegarder",
+    "immediatelyAdd": "Ajouter immédiatement",
+    "saveSuccess": "Le succès de la conservation de l’information tableau de bord"
+  }
+}
