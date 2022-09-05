@@ -11,11 +11,12 @@ const { locale } = useI18n()
 
 const user = useUserStore()
 const router = useRouter()
-const navBackgroundColor = '#141f29'
-const navActiveTextColor = 'white'
-const navTextColor = '#989898'
-const textColor = '#EEE'
-const activeTextColor = '#0FC700'
+const navBackgroundColor = ref('#141f29')
+const navActiveTextColor = ref('white')
+const navTextColor = ref('#989898')
+const textColor = ref('#EEE')
+const activeTextColor = ref('#0FC700')
+const collapse = ref(false)
 const isFullscreen = ref(false)
 const supportedLangs = reactive({
   langs: ["en-US", "zh-CN", "fr-FR"]
@@ -30,13 +31,13 @@ const langs = reactive({
 
 const defaultActive = router.currentRoute.value.name
 let menuRoutes = []
-const collapse = ref(false)
+
 
 const userName = user.name
 const userAvatar = new URL('../assets/images/default-avatar.png', import.meta.url).href
 
 const siderWidth = computed(() => {
-  return collapse.value ? '64px' : '227px'
+  return collapse.value ? '64px' : '230px'
 })
 
 const getRoutes = () => {
@@ -119,13 +120,13 @@ const changeLocale = lang => {
   setLocale(lang)
 }
 
+const getIsFullscreen = () => {
+  isFullscreen.value = screenfull.isFullscreen
+}
+
 const handleLogout = () => {
   user.logout()
   router.push({ path: '/login' })
-}
-
-const getIsFullscreen = () => {
-  isFullscreen.value = screenfull.isFullscreen
 }
 
 getRoutes()
@@ -142,19 +143,20 @@ onUnmounted(() => {
 
 defineExpose({
   navBackgroundColor,
+  navActiveTextColor,
+  navTextColor,
   textColor,
   activeTextColor,
+  collapse,
   isFullscreen,
   supportedLangs,
   langs,
-  navActiveTextColor,
-  navTextColor,
   defaultActive,
   menuRoutes,
-  collapse,
-  siderWidth,
   userName,
   userAvatar,
+  siderWidth,
+  
   getRoutes,
   filterPermissionRoutes,
   filterRoutes,
@@ -163,6 +165,7 @@ defineExpose({
   handleCommand,
   toggleScreenfull,
   changeLocale,
+  getIsFullscreen,
   handleLogout
 })
 </script>
@@ -189,41 +192,47 @@ defineExpose({
               :default-active="$route.name"
               :router="true"
               :collapse="collapse">
-              <template v-for="(route,index) in menuRoutes">
+              <template v-for="route in menuRoutes">
                 <el-menu-item
-                  v-if="!haveChildren(route)" :key="route.name" :index="index + ''"
+                  v-if="!haveChildren(route)" :key="route.name" :index="route.name"
                   :route="{ name: route.name }">
-                  <i v-if="route.meta.nav.icon" :class="route.meta.nav.icon" :style="{color: route.meta.nav.color}" />
+                  <el-icon v-if="route.meta.nav.icon">
+                    <component :is="route.meta.nav.icon" class="com-de" />
+                  </el-icon>
                   <icon-svg
                     v-if="route.meta.nav.svg"
                     :class-name="route.meta.nav.svg.class"
                     :name="route.meta.nav.svg.name"
-                    color="#ffffff"
+                    :style="{ marginRight : collapse ? '0' : '5px' }"
                   />
                   <template #title>{{ route.meta.nav.title }}</template>
                 </el-menu-item>
-                <el-menu-item v-else :key="route.name + 'top_key'" class="el-submenu-level_1" :index="index + ''">
+                <el-menu-item v-else :key="route.name + 'top_key'" class="el-submenu-level_1" :index="route.name">
                   <template #title>
-                    <i v-if="route.meta.nav.icon" :class="route.meta.nav.icon" />
+                    <el-icon v-if="route.meta.nav.icon">
+                      <component :is="route.meta.nav.icon" />
+                    </el-icon>
                     <icon-svg
                       v-if="route.meta.nav.svg"
                       :class-name="route.meta.nav.svg.class"
-                      :svg-name="route.meta.nav.svg.name"
+                      :name="route.meta.nav.svg.name"
                     />
                     <span>{{ route.meta.nav.title }}</span>
-                    {{ route }}
                   </template>
 
-                  <template v-for="(item,i) in route.children">
+                  <template v-for="item in route.children">
                     <el-menu-item
-                      v-if="!haveChildren(item)" :key="item.name" :index="i + ''"
+                      v-if="!haveChildren(item)" :key="item.name" :index="item.name"
                       :route="{ name: item.name }">
                       <span class="fa-dot" />
                       <span>{{ item.meta.nav.title }}</span>
                     </el-menu-item>
-                    <el-sub-menu v-else :key="item.name + 'bottom_key'" class="el-submenu-level_2" :index="i + ''">
+                    <el-sub-menu v-else :key="item.name + 'bottom_key'" class="el-submenu-level_2" :index="item.name">
                       <template #title>
-                        <i v-if="item.meta.nav.icon" :class="item.meta.nav.icon" />
+                        <!-- <i v-if="item.meta.nav.icon" :class="item.meta.nav.icon" /> -->
+                        <el-icon v-if="route.meta.nav.icon">
+                          <component :is="route.meta.nav.icon" />
+                        </el-icon>
                         <icon-svg
                           v-else-if="item.meta.nav.svg" :class-name="item.meta.nav.svg.class" 
                           :name="item.meta.nav.svg.name" />
@@ -273,7 +282,7 @@ defineExpose({
           <el-dropdown style="height: 100%" @command="handleCommand">
             <div class="language-icon-container">
               <icon-svg
-                class-name="language-icon"
+                class-name="svg-icon-language"
                 name="language"
               />
             </div>
@@ -295,7 +304,7 @@ defineExpose({
               <img v-if="userAvatar" class="user-avatar" :src="userAvatar">
               <img v-else class="user-avatar" src="../assets/images/default-avatar.png">
               <span class="user-name">{{ userName || userPhone }}</span>
-              <i class="el-icon-arrow-down" />
+              <el-icon><ArrowDownBold /></el-icon>
             </div>
             <template #dropdown>
               <el-dropdown-menu>
@@ -315,12 +324,17 @@ defineExpose({
 </template>
 
 <style lang="less" scoped>
-.nav-svg {
+.svg-icon  {
   margin-right: 5px;
   width: 24px;
   height: 18px;
   vertical-align: middle;
-  color: #909399;
+}
+
+.com-de {
+  width: 24px;
+  height: 18px;
+  vertical-align: middle;
 }
 
 .page {
@@ -369,6 +383,18 @@ defineExpose({
         .el-menu-noborder {
           border-right: none;
         }
+
+        .el-menu-noborder:not(.el-menu--collapse) {
+          width: 230px !important;
+          height: 100%;
+        }
+        // .el-menu-item:hover{
+        //   color: #fff;
+        // }
+
+        // .el-menu-item:hover i{
+        //   color: #fff;
+        // }
       }
 
       .sidebar-footer {
@@ -449,6 +475,9 @@ defineExpose({
         display: flex;
 
         .language-icon-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           padding: 0 10px;
           width: 38px;
           height: 100%;
@@ -458,7 +487,8 @@ defineExpose({
             background: rgba(0, 0, 0, 0.025);
           }
 
-          .language-icon {
+          .svg-icon-language {
+            margin: 0;
             width: 24px;
             height: 100%;
           }

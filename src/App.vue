@@ -7,12 +7,7 @@
   <router-view />
 </template>
 
-<style lang="less" scoped>
-// symbol path {
-//   fill: none !important;
-// }
-@import "./assets/styles/base.less";
-</style>
+<style lang="less" scoped></style>
 
 <!-- <template>
   <div>

@@ -3,7 +3,7 @@ import {
   // ElSelect,
   // ElBreadcrumb,
   // ElBreadcrumbItem,
-  // ElIcon,
+  ElIcon,
   ElDropdown,
   ElDropdownMenu,
   ElDropdownItem,
@@ -29,6 +29,7 @@ import 'element-plus/dist/index.css'
 const Element = {
   install: function (app) {
     app.use(ElButton)
+    app.use(ElIcon)
     app.use(ElForm)
     app.use(ElFormItem)
     app.use(ElInput)

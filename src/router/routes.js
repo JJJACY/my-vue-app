@@ -20,7 +20,7 @@ const routes = [
           nav: {
             title: '控制台',
             svg: {
-              class: 'nav-svg',
+              class: 'svg-icon-dashboard',
               name: 'dashboard'
             }
           }
@@ -35,8 +35,8 @@ const routes = [
           title: '后台管理-首页',
           nav: {
             title: '首页',
-            icon: 'el-icon-s-home',
-            color: '#ffffff',
+            icon: 'home-filled',
+            class: 'svg-icon-homefilled'
           }
         }
       },
@@ -50,7 +50,7 @@ const routes = [
           nav: {
             title: '细节管理',
             svg: {
-              class: 'nav-svg',
+              class: 'svg-icon-menu',
               name: 'menu'
             }
           }

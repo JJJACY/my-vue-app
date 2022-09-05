@@ -6,10 +6,8 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { computed } from 'vue'
-</script>
 <script lang="ts" setup>
+import { computed } from 'vue'
 const props = defineProps({
   prefix: {
     type: String,
@@ -21,7 +19,7 @@ const props = defineProps({
   },
   color: {
     type: String,
-    default: '#333'
+    default: ''
   },
   className: {
     type: String,

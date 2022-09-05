@@ -120,7 +120,7 @@ defineExpose({
 <template>
   <div class="page-home">
     <h5>{{ $t("nav.home.name") }}</h5>
-    <a-form :model="form" :style="{width:'600px'}">
+    <a-form :model="form" :style="{ width: '600px' }">
       <a-form-item field="name" label="Username">
         <a-input v-model="form.name" placeholder="please enter your username..." />
         <template #help>
@@ -162,19 +162,18 @@ defineExpose({
   background: linear-gradient(to right, #414345, #232526);
 }
 
-svg {
-  height: 100%;
-}
+// d3的样式导致svg 不出现。。。
+// path {
+//   fill: transparent;
+//   stroke: #FFF;
+//   cursor: pointer;
+//   transition: fill .2s ease, stroke .2s ease, transform .2s ease;
 
-path {
-  fill: transparent;
-  stroke: #FFF;
-  cursor: pointer;
-  transition: fill .2s ease, stroke .2s ease, transform .2s ease;
-  &:hover, &.active {
-    fill: rgba(#FFCA28, .5);
-    stroke: #FFCA28;
-    transform: translateY(-5px)
-  }
-}
+//   &:hover,
+//   &.active {
+//     fill: rgba(#FFCA28, .5);
+//     stroke: #FFCA28;
+//     transform: translateY(-5px)
+//   }
+// }
 </style>

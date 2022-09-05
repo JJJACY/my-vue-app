@@ -44,6 +44,7 @@ export default defineConfig({
         modifyVars: {
           themeColor: "#a0a184",
         },
+        additionalData: '@import "./src/assets/styles/base.less";',
         javascriptEnabled: true,
       },
     },

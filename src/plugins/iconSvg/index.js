@@ -1,4 +1,5 @@
-const fs = require('fs')
+// const fs = require('fs')
+import fs from 'fs';
 let idPerfix = ''
 const svgTitle = /<svg([^>+].*?)>/
 const clearHeightWidth = /(width|height)="([^>+].*?)"/g
@@ -22,7 +23,6 @@ function findSvgFile (dir) {
         .replace(clearReturn, '')
         .replace(svgTitle, ($1, $2) => {
           // console.log(++i)
-          // console.log(dirent.name)
           let width = 0
           let height = 0
           let content = $2.replace(clearHeightWidth, (s1, s2, s3) => {
@@ -45,7 +45,7 @@ function findSvgFile (dir) {
   return svgRes
 }
 
-exports.svgBuilder = (path, perfix = 'icon') => {
+const svgBuilder = (path, perfix = 'icon') => {
   if (path === '') return
   idPerfix = perfix
   const res = findSvgFile(path)
@@ -65,3 +65,5 @@ exports.svgBuilder = (path, perfix = 'icon') => {
     }
   }
 }
+
+export { svgBuilder }
