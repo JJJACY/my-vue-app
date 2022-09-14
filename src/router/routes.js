@@ -2,12 +2,13 @@ import AdminLayout from 'comp/AdminLayout.vue'
 const dashBoard = () => import('@/views/dashboard.vue')
 const Home = () => import('@/views/home.vue')
 const Login = () => import('@/views/login.vue')
-const twDetail = () => import('@/views/twDetail.vue')
+
+import routesDetailManagement from './routesDetailManagement'
 
 const routes = [
   {
     path: '/',
-    // redirect: { name: "home" },
+    redirect: { name: "home" },
     component: AdminLayout,
     children: [
       {
@@ -40,22 +41,7 @@ const routes = [
           }
         }
       },
-      {
-        path: 'twdetail',
-        name: 'Twdetail',
-        component: twDetail,
-        permission: 1,
-        meta: {
-          title: '后台管理-细节管理',
-          nav: {
-            title: '细节管理',
-            svg: {
-              class: 'svg-icon-menu',
-              name: 'menu'
-            }
-          }
-        }
-      }
+      ...routesDetailManagement,
     ]
   },
   {

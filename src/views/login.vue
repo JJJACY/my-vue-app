@@ -3,6 +3,7 @@ import { reactive, ref, withDefaults } from 'vue';
 import { useRouter } from 'vue-router';
 import { useUserStore } from '../stores/user';
 import { storeToRefs } from 'pinia';
+import type { FormInstance, FormRules } from 'element-plus'
 
 interface Login {
   user: string,
@@ -26,14 +27,14 @@ const user = useUserStore()
 const router = useRouter()
 const form = ref()
 const formData = reactive({ name: '', password: '' })
-const rules = {
+const rules = reactive({
   name: [{ required: true, message: '请输入姓名', trigger: true }],
   password: [{ required: true, message: '请输入密码', trigger: true }]
-}
+})
 
 
 const handleSubmit = () => {
-  form.value?.validate(async (valid) => {
+  form.value?.validate(async (valid: FormInstance) => {
     if (valid) {
       const userInfo: Login = {
         user: formData.name, password: formData.password
@@ -68,10 +69,10 @@ defineExpose({
       <h3> protect animal</h3>
       <el-form ref="form" :model="formData" :rules="rules">
         <el-form-item prop="name" label="姓名">
-          <el-input placeholder="请输入姓名" v-model="formData.name"></el-input>
+          <el-input v-model="formData.name" placeholder="请输入姓名" />
         </el-form-item>
         <el-form-item prop="password" label="密码">
-          <el-input placeholder="请输入密码" v-model="formData.password"></el-input>
+          <el-input v-model="formData.password" placeholder="请输入密码" />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="handleSubmit">确认</el-button>

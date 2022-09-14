@@ -21,13 +21,11 @@ import {
   ElMenuItem,
   ElSubMenu
 } from 'element-plus'
-
+import { App } from 'vue'
 import 'element-plus/dist/index.css'
 
-// const app = createApp()
-// console.log(app,28)
 const Element = {
-  install: function (app) {
+  install: function (app: App<Element>) {
     app.use(ElButton)
     app.use(ElIcon)
     app.use(ElForm)

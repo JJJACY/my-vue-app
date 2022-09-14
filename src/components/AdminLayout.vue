@@ -207,7 +207,7 @@ defineExpose({
                   />
                   <template #title>{{ route.meta.nav.title }}</template>
                 </el-menu-item>
-                <el-menu-item v-else :key="route.name + 'top_key'" class="el-submenu-level_1" :index="route.name">
+                <el-sub-menu v-else :key="route.name + ''" class="el-submenu-level_1" :index="route.name">
                   <template #title>
                     <el-icon v-if="route.meta.nav.icon">
                       <component :is="route.meta.nav.icon" />
@@ -219,17 +219,22 @@ defineExpose({
                     />
                     <span>{{ route.meta.nav.title }}</span>
                   </template>
-
                   <template v-for="item in route.children">
                     <el-menu-item
                       v-if="!haveChildren(item)" :key="item.name" :index="item.name"
                       :route="{ name: item.name }">
-                      <span class="fa-dot" />
-                      <span>{{ item.meta.nav.title }}</span>
+                      <el-icon v-if="item.meta.nav.icon">
+                        <component :is="item.meta.nav.icon" />
+                      </el-icon>
+                      <icon-svg
+                        v-if="item.meta.nav.svg"
+                        :class-name="item.meta.nav.svg.class"
+                        :name="item.meta.nav.svg.name"
+                      />
+                      <span>{{ item.meta.nav.title }}222</span>
                     </el-menu-item>
-                    <el-sub-menu v-else :key="item.name + 'bottom_key'" class="el-submenu-level_2" :index="item.name">
+                    <el-sub-menu v-else :key="item.name + ''" class="el-submenu-level_2" :index="item.name">
                       <template #title>
-                        <!-- <i v-if="item.meta.nav.icon" :class="item.meta.nav.icon" /> -->
                         <el-icon v-if="route.meta.nav.icon">
                           <component :is="route.meta.nav.icon" />
                         </el-icon>
@@ -243,11 +248,11 @@ defineExpose({
                         v-for="data in item.children" :key="data.name" :index="data.name"
                         :route="{ name: data.name }">
                         <span class="fa-dot" />
-                        <span>{{ data.meta.nav.title }}</span>
+                        <span>{{ data.meta.nav.title }}111</span>
                       </el-menu-item>
                     </el-sub-menu>
                   </template>
-                </el-menu-item>
+                </el-sub-menu>
               </template>
             </el-menu>
           </el-scrollbar>

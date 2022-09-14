@@ -28,7 +28,8 @@ module.exports = {
     // ecmaFeatures: {
     //   modules: true
     // },
-    parser: '@babel/eslint-parser',
+    // parser: '@babel/eslint-parser',
+    parser: '@typescript-eslint/parser',
     requireConfigFile : false,
   },
   plugins: [
