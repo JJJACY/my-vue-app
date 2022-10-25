@@ -24,8 +24,8 @@ const handleErrorRequest = error => {
       Message.error(message)
     } else if (status === 403) {
       Message.error('禁止访问')
-    } else if (status === 419) {
-      Message.error('sb')
+    } else if (status === 418) {
+      Message.error('I‘m a teapot')
     } else if (status === 422 || status === 423 || status === 429) {
       Message.error(errors)
     } else {

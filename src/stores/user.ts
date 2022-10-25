@@ -5,7 +5,7 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
  * @param {string} a
  * @param {string} p
  */
-function apiLogin (a, p) {
+function apiLogin (a:string, p:string) {
   if (a && p) return Promise.resolve({ isAdmin: true })
   // if (a === 'ed' && p === 'ed') return Promise.resolve({ isAdmin: true })
   if (p === 'ed') return Promise.resolve({ isAdmin: false })

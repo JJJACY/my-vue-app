@@ -3,10 +3,19 @@ import { createI18n } from 'vue-i18n'
 import enUS from './element/zh-CN'
 import zhCN from './element/en-US'
 import frFR from './element/fr-FR'
+import { keysOf } from 'element-plus/lib/utils'
+
+interface langType  {
+  "en-US": {},
+  "fr-FR": {},
+  "zh-CN": {}
+}
+
+type lang = keyof langType
 
 const language = (navigator.language || 'en').toLocaleLowerCase() // 这是获取浏览器的语言
 const LOCALE = 'this_locale'
-export const setLocale = lang => localStorage.setItem(LOCALE, lang);
+export const setLocale = (lang: string) => localStorage.setItem(LOCALE, lang);
 
 const ELEMENT_LANG = {
   "en-US": enUS,
@@ -14,19 +23,26 @@ const ELEMENT_LANG = {
   "fr-FR": frFR
 };
 
+
 function loadLocaleMessages() {
   const locales = import.meta.globEager('./project/*.json')
-  const messages = {};
+  console.log(locales)
+  const messages: langType = {
+    "en-US": {},
+    "fr-FR": {},
+    "zh-CN": {}
+  };
   Object.keys(locales).forEach(key =>{
     const matched = key.match(/([A-Za-z0-9-_]+)\./i);
     if (matched && matched.length > 1) {
       const locale = matched[1];
-      messages[locale] = {
+      messages[locale as lang] = {
         ...locales[key],
-        ...ELEMENT_LANG[locale]
+        ...ELEMENT_LANG[locale as lang]
       };
     }
   })
+  console.log(messages,111)
   return messages;
 }
 

@@ -46,6 +46,7 @@ const getRoutes = () => {
     user.perimssion
   )
   menuRoutes = filterRoutes(resultRoutes)
+  console.log(menuRoutes,49)
 }
 
 const filterPermissionRoutes = (routes, permissions) => {

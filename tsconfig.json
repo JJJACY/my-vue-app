@@ -1,4 +1,3 @@
-// tsconfig.json
 {
   "compilerOptions": {
     // TypeScript 默认会把代码编译为 ECMAScript 3
@@ -13,9 +12,11 @@
     "paths": {
       "@": ["./src"],
       "@/*": ["./src/*"]
-    }
+    },
+    "types": [
+      "vite/client"
+    ],
   },
-
 
   // 配置需要校验的文件
   "include": [
