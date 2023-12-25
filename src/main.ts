@@ -27,7 +27,7 @@ import i18n from "./locales/index";
 
 // echarts.registerMap('china',china)
 import "virtual:svg-icons-register";
-import allKeys from 'virtual:svg-icons-names'
+// import allKeys from 'virtual:svg-icons-names';
 // console.log(allKeys)
 
 const app = createApp(App);
@@ -39,6 +39,22 @@ const pinia = createPinia();
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
+
+
+// axios.get('/api/test').then((res)=>{
+//   console.log(res);
+// })
+fetch("/api/test",{
+  method: 'GET',
+}).then(data => {
+  return data.json();
+  // console.log(data,36)
+}).then(data => {
+  console.log(data,36)
+}).catch(error => {
+  console.log(error);
+})
+
 
 app
   .use(router)

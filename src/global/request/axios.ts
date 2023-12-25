@@ -13,13 +13,20 @@ axiosInstance.interceptors.request.use(
   error => Promise.reject(error)
 )
 
-const handleErrorRequest = error => {
+type errorType = {
+  response: {
+    status: number,
+    message: string
+  }
+}
+
+const handleErrorRequest = (error: errorType) => {
   const { response } = error
   const status = response ? response.status : 408
   if (response) {
-    const { data } = response
-    const { errors } = data
-    const message = data.message || '请求发送失败~'
+    // const { data } = response
+    // const { errors } = data
+    const message = response.message || '请求发送失败~'
     if (status === 401) {
       Message.error(message)
     } else if (status === 403) {
@@ -27,7 +34,7 @@ const handleErrorRequest = error => {
     } else if (status === 418) {
       Message.error('I‘m a teapot')
     } else if (status === 422 || status === 423 || status === 429) {
-      Message.error(errors)
+      Message.error(message)
     } else {
       Message.error(message)
     }

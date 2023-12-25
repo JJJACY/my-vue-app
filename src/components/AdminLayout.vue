@@ -7,7 +7,31 @@ import screenfull from 'screenfull'
 import { setLocale } from "@/locales/index";
 import { Message } from '@arco-design/web-vue'
 import { useI18n } from 'vue-i18n'
+import { setTheme } from '@/theme/theme'
 const { locale } = useI18n()
+
+
+setTheme('daytime')
+const color = ref('rgba(255, 69, 0, 0.68)')
+const predefineColors = ref([
+  '#ff4500',
+  '#ff8c00',
+  '#ffd700',
+  '#90ee90',
+  '#00ced1',
+  '#1e90ff',
+  '#c71585',
+  'rgba(255, 69, 0, 0.68)',
+  'rgb(255, 120, 0)',
+  'hsv(51, 100, 98)',
+  'hsva(120, 40, 94, 0.5)',
+  'hsl(181, 100%, 37%)',
+  'hsla(209, 100%, 56%, 0.73)',
+  '#c7158577',
+])
+const handleChangeTheme = () => {
+  console.log('change')
+}
 
 const user = useUserStore()
 const router = useRouter()
@@ -104,7 +128,7 @@ const handleCollapse = () => {
 }
 
 const handleCommand = (command) => {
-  if (typeof command === 'handleLogout') handleLogout()
+  if (command === 'handleLogout') handleLogout()
   else changeLocale(command);
 }
 
@@ -127,7 +151,7 @@ const getIsFullscreen = () => {
 
 const handleLogout = () => {
   user.logout()
-  router.push({ path: '/login' })
+  router.push({ name: 'login' })
 }
 
 getRoutes()
@@ -285,6 +309,9 @@ defineExpose({
           <!-- <el-link type="primary" :underline="false" @click="goLxp"></el-link> -->
         </div>
         <div class="page-header-right">
+          <div class="theme-button">
+            <el-color-picker v-model="color" show-alpha :predefine="predefineColors" @active-change="handleChangeTheme" />
+          </div>
           <el-dropdown style="height: 100%" @command="handleCommand">
             <div class="language-icon-container">
               <icon-svg
@@ -533,7 +560,8 @@ defineExpose({
       position: relative;
       flex: 1;
       overflow-y: auto;
-      background: #f0f2f5;
+      // background: #f0f2f5;
+      background: @backgroundColor;
     }
     
     :deep(.el-scrollbar__view) {

@@ -3,6 +3,8 @@ import { reactive, ref, onMounted, watch } from 'vue'
 import { Message } from '@arco-design/web-vue'
 // import axios from 'axios'
 
+const show = ref(true)
+
 const form = reactive({
   name: '',
   post: '',
@@ -139,9 +141,20 @@ defineExpose({
         <a-button @click="handleClickMessage">Submit</a-button>
       </a-form-item>
     </a-form>
+    
+    <button @click="show = !show">Toggle</button>
+    <Transition name="nested" :duration="550">
+      <div v-if="show" class="outer map-container">
+        <div class="inner">
+          Hello
+        </div>
+      </div>
+    </Transition>
+
+
 
     <!-- <svg class="twmap"></svg> -->
-    <div ref="mapContainer" class="map-container">
+    <div ref="mapContainers" class="map-containers">
       <!-- <div id="myMap" class="twmap" ref="myMap"></div> -->
       <div style="width: 200px">
         <h1>{{ mapInfo.name }}</h1>
@@ -162,6 +175,28 @@ defineExpose({
   background: linear-gradient(to right, #414345, #232526);
 }
 
+
+.inner {
+  width: 80%;
+  height: 80%;
+  background: #fff;
+}
+
+/* 应用于嵌套元素的规则 */
+.nested-enter-active .inner,
+.nested-leave-active .inner {
+  transition: all 0.3s ease-in-out;
+}
+
+.nested-enter-from .inner,
+.nested-leave-to .inner {
+  transform: translateX(-30px);
+  opacity: 0;
+}
+
+.nested-enter-active .inner {
+  transition-delay: 0.25s;
+}
 // d3的样式导致svg 不出现。。。
 // path {
 //   fill: transparent;

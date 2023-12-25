@@ -1,18 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import routes from './routes';
-import NProgress from "nprogress";
+import Nprogress from 'nprogress'
 import "nprogress/nprogress.css";
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
 })
 
 router.firstInit = false;
 
 router.beforeEach(async (to, from, next) => {
-  NProgress.start();
-  if (to.meta.title) document.title = to.meta.title;
+  Nprogress.start();
+  if (to.meta.title) document.title = to.meta.title as string;
   try {
     // let TOKEN = true
     // if (!TOKEN && to.name !== "AccountLogin") {
@@ -34,7 +34,7 @@ router.beforeEach(async (to, from, next) => {
 });
 
 router.afterEach(() => {
-  NProgress.done();
+  Nprogress.done();
 });
 
 

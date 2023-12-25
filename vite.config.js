@@ -1,23 +1,30 @@
 import { defineConfig } from "vite";
+
 import vue from "@vitejs/plugin-vue";
-import { resolve } from "path";
+// import { resolve } from "path";
 import viteCompression from "vite-plugin-compression";
 import importToCDN from "vite-plugin-cdn-import";
 import eslintPlugin from 'vite-plugin-eslint'
 import { svgBuilder } from "./src/plugins/iconSvg/index";
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import { viteMockServe } from 'vite-plugin-mock'
 import vueI18n from '@intlify/vite-plugin-vue-i18n'
-import path from 'path'
+import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: "./",
   resolve: {
     alias: {
-      comp: resolve(__dirname, "src/components"),
-      "@": resolve(__dirname, "src"),
+      comp: path.resolve(__dirname, "src/components"),
+      "@": path.resolve(__dirname, "src"),
       images: "./src/assets/images", //配置静态资源路径
     },
+  },
+  server: {
+    hmr: {
+      overlay: false,
+    }
   },
   build: {
     // minify: "terser",
@@ -41,10 +48,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       less: {
-        modifyVars: {
-          themeColor: "#a0a184",
-        },
-        additionalData: '@import "./src/assets/styles/base.less";',
+        additionalData: '@import "./src/assets/styles/theme.less";',
         javascriptEnabled: true,
       },
     },
@@ -63,7 +67,7 @@ export default defineConfig({
       compositionOnly: false,
       runtimeOnly: true,
       // you need to set i18n resource including paths !
-      include: [resolve(__dirname, './src/locales/')],
+      include: [path.resolve(__dirname, './src/locales/')],
     }),
     viteCompression({
       //生成压缩包gz
@@ -90,7 +94,8 @@ export default defineConfig({
     }),
     eslintPlugin({
       include: ['src/**/*.js', 'src/**/*.vue', 'src/*.js', 'src/*.vue']
-    })
+    }),
+    viteMockServe(),
   ],
 });
 

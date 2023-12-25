@@ -6,9 +6,10 @@ import {
   Checkbox
 } from '@arco-design/web-vue'
 import '@arco-design/web-vue/dist/arco.css'
+import { App } from 'vue'
 
 const Arco = {
-  install (Vue) {
+  install (Vue: App<Element>) {
     Vue.use(Button)
     Vue.use(Form)
     // Vue.use(Formitem)

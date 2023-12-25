@@ -9,19 +9,21 @@
     "jsx": "preserve",
     "allowJs": true,
     "moduleResolution": "node",
+    "baseUrl": "./", // 注意：baseUrl 必选，与 paths 成对出现，以 tsconfig.json 文件所在目录开始
     "paths": {
-      "@": ["./src"],
       "@/*": ["./src/*"]
     },
+    "outDir": "dist",
     "types": [
-      "vite/client"
+      "vite/client",
     ],
   },
 
   // 配置需要校验的文件
   "include": [
     "src/**/*.ts",
-    "src/**/*.vue"
+    "src/**/*.vue",
+    "types/**/*.d.ts",
   ],
 
   // 排除不需要 TypeScript 校验的文件

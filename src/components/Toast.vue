@@ -39,7 +39,6 @@ defineExpose({
   background: #fff;
   border: 1px solid #dcdfe6;
   color: #606266;
-  -webkit-appearance: none;
   text-align: center;
   box-sizing: border-box;
   outline: none;

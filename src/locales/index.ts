@@ -3,7 +3,6 @@ import { createI18n } from 'vue-i18n'
 import enUS from './element/zh-CN'
 import zhCN from './element/en-US'
 import frFR from './element/fr-FR'
-import { keysOf } from 'element-plus/lib/utils'
 
 interface langType  {
   "en-US": {},
@@ -15,7 +14,8 @@ type lang = keyof langType
 
 const language = (navigator.language || 'en').toLocaleLowerCase() // 这是获取浏览器的语言
 const LOCALE = 'this_locale'
-export const setLocale = (lang: string) => localStorage.setItem(LOCALE, lang);
+export const setLocale = (lang: string = "zh-CN") => localStorage.setItem(LOCALE, lang);
+setLocale()
 
 const ELEMENT_LANG = {
   "en-US": enUS,

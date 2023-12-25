@@ -19,7 +19,8 @@ import {
   ElScrollbar,
   ElMenu,
   ElMenuItem,
-  ElSubMenu
+  ElSubMenu,
+  ElColorPicker,
 } from 'element-plus'
 import { App } from 'vue'
 import 'element-plus/dist/index.css'
@@ -39,6 +40,7 @@ const Element = {
     app.use(ElMenu)
     app.use(ElMenuItem)
     app.use(ElSubMenu)
+    app.use(ElColorPicker)
   }
 }
 

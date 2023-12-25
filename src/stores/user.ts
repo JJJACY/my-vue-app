@@ -36,11 +36,10 @@ export const useUserStore = defineStore({
      * @param {string} user
      * @param {string} password
      */
-    async login ({ user, password }) {
-      const userData = await apiLogin(user, password)
-
+    async login (name: string, userPhone: string) {
+      const userData = await apiLogin(name, userPhone)
       this.$patch({
-        name: user,
+        name,
         ...userData
       })
     }
